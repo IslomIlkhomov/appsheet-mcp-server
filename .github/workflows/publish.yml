@@ -34,7 +34,7 @@ jobs:
           node dist/index.js &
           PID=$!
           sleep 2
-          kill $PID
+          kill $PID || true
         env:
           CI: true
 
