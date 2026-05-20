@@ -63,7 +63,6 @@ Google's official AppSheet MCP server is locked behind Enterprise Plus private p
 
 Would love your feedback! What tools/features would you want added?
 
-Built by Antigravity — 49+ AppSheet projects, 100% client satisfaction 🎯
 
 ---
 

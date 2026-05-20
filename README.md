@@ -244,7 +244,3 @@ Contributions welcome! Please open an issue or PR on GitHub.
 ## License
 
 MIT © [Islom Ilkhom](https://github.com/IslomIlkhom) / [Antigravity](https://antigravity.google/)
-
-## Built By
-
-Built by [Antigravity](https://antigravity.google/) — AI Automation Engineering Consultancy specializing in AppSheet, Gemini, and enterprise automation. 49+ AppSheet projects delivered with 100% client satisfaction.
