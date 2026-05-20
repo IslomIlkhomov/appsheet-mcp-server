@@ -1,0 +1,41 @@
+{
+  "name": "appsheet-mcp-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Open-source MCP server for Google AppSheet — CRUD, schema discovery, and automation tools",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "appsheet-mcp-server": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src/",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": ["mcp", "appsheet", "google", "model-context-protocol", "ai", "automation", "no-code", "low-code"],
+  "author": "Islom Ilkhomov <islom@entergravity.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/entergravity/appsheet-mcp-server"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  },
+  "mcpName": "appsheet"
+}

@@ -1,0 +1,54 @@
+{
+  "name": "appsheet",
+  "description": "Open-source MCP server for Google AppSheet — CRUD, schema discovery, and automation tools for AI assistants",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/entergravity/appsheet-mcp-server",
+    "source": "https://github.com/entergravity/appsheet-mcp-server"
+  },
+  "homepage": "https://github.com/entergravity/appsheet-mcp-server#readme",
+  "license": "MIT",
+  "runtime": "node",
+  "config": {
+    "env": {
+      "APPSHEET_APP_ID": {
+        "description": "Your AppSheet application ID",
+        "required": true
+      },
+      "APPSHEET_API_KEY": {
+        "description": "Your AppSheet API key (ApplicationAccessKey)",
+        "required": true
+      },
+      "APPSHEET_REGION": {
+        "description": "API region: global, eu, or apac",
+        "required": false,
+        "default": "global"
+      },
+      "APPSHEET_TABLES": {
+        "description": "Comma-separated table names for schema discovery",
+        "required": false
+      },
+      "APPSHEET_CONFIG_PATH": {
+        "description": "Path to multi-app JSON config file",
+        "required": false
+      },
+      "APPSHEET_DEBUG": {
+        "description": "Enable debug logging (true/false)",
+        "required": false,
+        "default": "false"
+      }
+    }
+  },
+  "tools": [
+    "appsheet_find_rows",
+    "appsheet_add_rows",
+    "appsheet_update_rows",
+    "appsheet_delete_rows",
+    "appsheet_list_apps",
+    "appsheet_list_tables",
+    "appsheet_describe_table",
+    "appsheet_run_action",
+    "appsheet_run_workflow",
+    "appsheet_get_app_info"
+  ]
+}

@@ -1,0 +1,36 @@
+# Smithery configuration for AppSheet MCP Server
+# https://smithery.ai
+
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      appId:
+        type: string
+        description: Your AppSheet application ID
+      apiKey:
+        type: string
+        description: Your AppSheet API key (ApplicationAccessKey)
+      region:
+        type: string
+        enum: [global, eu, apac]
+        default: global
+        description: API region
+      tables:
+        type: string
+        description: Comma-separated table names
+    required:
+      - appId
+      - apiKey
+  commandFunction: |-
+    (config) => ({
+      command: 'node',
+      args: ['dist/index.js'],
+      env: {
+        APPSHEET_APP_ID: config.appId,
+        APPSHEET_API_KEY: config.apiKey,
+        APPSHEET_REGION: config.region || 'global',
+        APPSHEET_TABLES: config.tables || ''
+      }
+    })
