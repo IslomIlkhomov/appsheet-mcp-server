@@ -3,10 +3,10 @@
   "description": "Open-source MCP server for Google AppSheet — CRUD, schema discovery, and automation tools for AI assistants",
   "version": "1.0.0",
   "repository": {
-    "url": "https://github.com/entergravity/appsheet-mcp-server",
-    "source": "https://github.com/entergravity/appsheet-mcp-server"
+    "url": "https://github.com/IslomIlkhom/appsheet-mcp-server",
+    "source": "https://github.com/IslomIlkhom/appsheet-mcp-server"
   },
-  "homepage": "https://github.com/entergravity/appsheet-mcp-server#readme",
+  "homepage": "https://github.com/IslomIlkhom/appsheet-mcp-server#readme",
   "license": "MIT",
   "runtime": "node",
   "config": {

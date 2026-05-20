@@ -18,7 +18,7 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": ["mcp", "appsheet", "google", "model-context-protocol", "ai", "automation", "no-code", "low-code"],
-  "author": "Islom Ilkhomov <islom@entergravity.com>",
+  "author": "Islom Ilkhom",
   "license": "MIT",
   "repository": {
     "type": "git",

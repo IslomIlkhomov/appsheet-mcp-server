@@ -243,8 +243,8 @@ Contributions welcome! Please open an issue or PR on GitHub.
 
 ## License
 
-MIT © [Islom Ilkhomov](https://github.com/anthropics) / [EnterGravity](https://entergravity.com)
+MIT © [Islom Ilkhom](https://github.com/IslomIlkhom) / [Antigravity](https://antigravity.google/)
 
 ## Built By
 
-Built by [EnterGravity](https://entergravity.com) — AI Automation Engineering Consultancy specializing in AppSheet, Gemini, and enterprise automation. 49+ AppSheet projects delivered with 100% client satisfaction.
+Built by [Antigravity](https://antigravity.google/) — AI Automation Engineering Consultancy specializing in AppSheet, Gemini, and enterprise automation. 49+ AppSheet projects delivered with 100% client satisfaction.

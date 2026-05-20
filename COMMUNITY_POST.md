@@ -58,12 +58,12 @@ Google's official AppSheet MCP server is locked behind Enterprise Plus private p
 - ✅ Debug mode for troubleshooting
 
 ### Links
-- GitHub: https://github.com/entergravity/appsheet-mcp-server
+- GitHub: https://github.com/IslomIlkhom/appsheet-mcp-server
 - npm: https://www.npmjs.com/package/appsheet-mcp-server
 
 Would love your feedback! What tools/features would you want added?
 
-Built by EnterGravity — 49+ AppSheet projects, 100% client satisfaction 🎯
+Built by Antigravity — 49+ AppSheet projects, 100% client satisfaction 🎯
 
 ---
 
@@ -89,7 +89,7 @@ Now there is. 10 tools. 2-minute setup. MIT licensed.
 
 npm install → configure → ask your AI to manage your AppSheet data.
 
-GitHub: https://github.com/entergravity/appsheet-mcp-server
+GitHub: https://github.com/IslomIlkhom/appsheet-mcp-server
 npm: https://www.npmjs.com/package/appsheet-mcp-server
 
 Built on 49+ AppSheet projects and real MCP production experience (our GIPHM Insurance MCP server handles 37 tables, 707 columns in production).
