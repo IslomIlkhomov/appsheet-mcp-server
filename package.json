@@ -1,6 +1,6 @@
 {
   "name": "appsheet-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Open-source MCP server for Google AppSheet — CRUD, schema discovery, and automation tools",
   "main": "dist/index.js",
@@ -17,7 +17,16 @@
     "lint": "eslint src/",
     "prepublishOnly": "npm run build"
   },
-  "keywords": ["mcp", "appsheet", "google", "model-context-protocol", "ai", "automation", "no-code", "low-code"],
+  "keywords": [
+    "mcp",
+    "appsheet",
+    "google",
+    "model-context-protocol",
+    "ai",
+    "automation",
+    "no-code",
+    "low-code"
+  ],
   "author": "Islom Ilkhom",
   "license": "MIT",
   "repository": {

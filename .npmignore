@@ -1,0 +1,13 @@
+# Source & config (dist is published)
+src/
+tsconfig.json
+tsup.config.ts
+
+# Dev files
+.github/
+.env
+.env.example
+COMMUNITY_POST.md
+
+# Build artifacts
+*.log
