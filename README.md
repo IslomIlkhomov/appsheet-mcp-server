@@ -1,6 +1,7 @@
 # AppSheet MCP Server
 
 [![npm version](https://img.shields.io/npm/v/appsheet-mcp-server)](https://www.npmjs.com/package/appsheet-mcp-server)
+[![Smithery](https://smithery.ai/badge/appsheet)](https://smithery.ai/server/appsheet)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Open-source [MCP](https://modelcontextprotocol.io) server for **Google AppSheet** — enabling AI assistants (Claude, Gemini, Cursor, etc.) to interact with your AppSheet apps via the Model Context Protocol.
@@ -22,12 +23,18 @@ Open-source [MCP](https://modelcontextprotocol.io) server for **Google AppSheet*
 
 ## Quick Start
 
-### 1. Get Your API Key
+### 1. Get Your App ID and Access Key
 
-1. Open your AppSheet app in the editor
-2. Go to **Settings → Integrations → IN: from cloud services**
-3. Enable the API and copy the **Application Access Key**
-4. Note your **App ID** from the URL: `https://www.appsheet.com/template/AppDef?appName=YOUR_APP_ID`
+Both come from the same screen in the AppSheet editor:
+
+![Where to find the App Id and Access Key in AppSheet Settings → Integrations](docs/appsheet-id-and-key.png)
+
+1. Open your app, then go to **Settings (⚙️) → Integrations**.
+2. Under **IN: from cloud services to your app**, turn the **Enable** toggle on.
+3. Copy the **App Id** shown in that section — this is your `APPSHEET_APP_ID` (e.g. `a369c03b-f9f8-4bce-af50-444ff4cb6ab7`).
+4. Under **Application Access Keys**, click **Create Application Access Key** if none exists, then click **Show Access Key** and copy it — this is your `APPSHEET_API_KEY` (it starts with `V2-`).
+
+> Keep the access key secret — it grants API access to your app's data. The key stays local to this server and is never sent to the AI model.
 
 ### 2. Configure
 
@@ -37,7 +44,6 @@ Open-source [MCP](https://modelcontextprotocol.io) server for **Google AppSheet*
 export APPSHEET_APP_ID="your-app-id"
 export APPSHEET_API_KEY="V2-your-api-key"
 export APPSHEET_REGION="global"  # or "eu" or "apac"
-export APPSHEET_TABLES="Customers,Orders,Products"  # optional
 ```
 
 #### Option B: Config File (Multiple Apps)
@@ -50,14 +56,12 @@ Create `~/.appsheet-mcp.json`:
     "crm": {
       "appId": "abc-123-def-456",
       "apiKey": "V2-xxxxx-xxxxx",
-      "region": "global",
-      "tables": ["Customers", "Contacts", "Deals"]
+      "region": "global"
     },
     "inventory": {
       "appId": "ghi-789-jkl-012",
       "apiKey": "V2-yyyyy-yyyyy",
-      "region": "eu",
-      "tables": ["Products", "Warehouses", "Orders"]
+      "region": "eu"
     }
   }
 }
@@ -107,6 +111,25 @@ Add to `.cursor/mcp.json` in your project:
 #### VS Code
 
 Add to your VS Code settings or `.vscode/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "appsheet": {
+      "command": "npx",
+      "args": ["-y", "appsheet-mcp-server"],
+      "env": {
+        "APPSHEET_APP_ID": "your-app-id",
+        "APPSHEET_API_KEY": "V2-your-api-key"
+      }
+    }
+  }
+}
+```
+
+#### Gemini Code Assist / Antigravity
+
+Add to your `.gemini/settings.json` or workspace MCP config:
 
 ```json
 {
@@ -183,7 +206,7 @@ selector: [Status] = "Active"
 selector: [Total] > 1000
 
 # Find by date range
-selector: AND([Date] >= "2024-01-01", [Date] <= "2024-12-31")
+selector: AND([Date] >= "2025-01-01", [Date] <= "2025-12-31")
 
 # Find by name (contains)
 selector: CONTAINS([Name], "Smith")
@@ -222,6 +245,48 @@ Debug output goes to stderr (not stdout, which is reserved for MCP protocol).
 | `eu` | `eu.appsheet.com` | EU data residency |
 | `apac` | `asia-southeast.appsheet.com` | Asia-Pacific |
 
+## Web App (No Install)
+
+Prefer a browser-based setup? The **AppSheet Chat** web app is a hosted Google Apps Script version with a built-in chat UI. No terminal, no npm — just paste your credentials and start chatting.
+
+- **8 tools** — same CRUD, schema, and action capabilities as this MCP server
+- **3 LLM providers** — Gemini, OpenAI, Claude (bring your own API key)
+- **Zero install** — runs entirely in Google Apps Script
+
+[Open the Web App →](https://script.google.com/u/0/home/projects/1LierNqciZQI_bX5uOsw46hAYN3JGwMm3R0EHXr3vMxfchpEOuspiVYlF/edit)
+
+## Limitations
+
+This server can only do what the AppSheet REST API exposes. Where the API is gated, the server is gated too. Be aware of the following before relying on it:
+
+### Tables *can* be discovered live
+`appsheet_list_tables` discovers tables straight from the API using only your **App ID + access key** — no need to pre-configure table names. It falls back to configured names only if the discovery endpoint is unavailable. (Setting `APPSHEET_TABLES` is therefore optional, useful mainly to scope or order the list.)
+
+### Column-level schema is inferred, not declared
+There is **no column schema endpoint**. The `appsheet_describe_table` tool works by fetching sample rows and inferring column names and types from the data. As a result it **cannot** see:
+
+- **Column `Type` definitions** (e.g. whether a field is Text, Number, Enum, Price, etc.)
+- **Validation rules** or constraints defined in the editor
+- **Virtual columns** (computed values not stored in row data)
+- **`Ref` relationships** between tables
+
+If a column is empty in the sampled rows, it won't appear at all. Treat the output as a best-effort shape hint, not an authoritative schema.
+
+### Actions cannot be listed or discovered
+The AppSheet API does **not** provide a way to enumerate the actions or automations configured in your app. Because of this:
+
+- `appsheet_run_action` / `appsheet_run_workflow` require the **exact action name** as defined in the AppSheet editor — you have to know it in advance.
+- Only **row-level actions** are invokable via the API. The action runs against the row(s) you pass in.
+- There is **no API search** for available action names, and the editor does not surface the API-callable name separately, so triggering grouped/sequenced actions may require trial and error.
+
+### Data operations are limited to the API's native verbs
+Beyond custom actions, the only built-in operations are `Find`, `Add`, `Edit`, and `Delete`. The server does not (and cannot) reproduce AppSheet's in-app validation, security filters, or workflow side effects beyond what the API itself triggers.
+
+### What it's good for today
+Structured **CRUD** over your tables, plus letting an AI assistant infer your data's shape **without** needing the Google Sheets API (gspread, Sheets API, etc.). It's a fast path to reading and writing AppSheet data — just not a full mirror of the editor's modeling layer.
+
+> See [AppSheet API integration points](https://support.google.com/appsheet/answer/10105557) for the underlying capabilities and constraints.
+
 ## Troubleshooting
 
 ### "AppSheet API error (403)"
@@ -236,6 +301,11 @@ Debug output goes to stderr (not stdout, which is reserved for MCP protocol).
 ### "No AppSheet configuration found"
 - Set `APPSHEET_APP_ID` and `APPSHEET_API_KEY` environment variables
 - Or create a config file at `~/.appsheet-mcp.json`
+
+### Writes succeed but commit 0 rows
+If `appsheet_add_rows` / `appsheet_update_rows` return a `warning` and `"Added 0 row(s)"`, AppSheet accepted the request (HTTP 200) but committed nothing. This is gated app-side, not a server error. Check that:
+- API updates are enabled: **Data → table → "Are updates allowed?"** includes the operation, and **Settings → Integrations** is on.
+- All **required columns** are supplied — a row failing validation is silently dropped.
 
 ## Contributing
 
