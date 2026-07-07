@@ -49,12 +49,17 @@ Open-source [MCP](https://modelcontextprotocol.io) server for **Google AppSheet*
 
 ## Examples
 
+<details>
+<summary>Try these prompts (click to expand)</summary>
+
 > "Show me all active customers"
 > "Add a new order for Acme Corp, 50 widgets"
 > "Update order #123 status to Shipped"
 > "Run the Send Invoice action on order #456"
 
 Filter syntax: `[Status] = "Active"`, `[Total] > 1000`, `AND([Col1] = "X", [Col2] > 5)`
+
+</details>
 
 ## Web App
 
