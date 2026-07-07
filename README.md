@@ -42,6 +42,9 @@ Open-source [MCP](https://modelcontextprotocol.io) server for **Google AppSheet*
 
 ## Tools
 
+<details>
+<summary>10 tools available (click to expand)</summary>
+
 | Tool | Description |
 |------|-------------|
 | `appsheet_find_rows` | Query rows with optional filter |
@@ -54,6 +57,8 @@ Open-source [MCP](https://modelcontextprotocol.io) server for **Google AppSheet*
 | `appsheet_run_workflow` | Trigger an automation/bot |
 | `appsheet_list_apps` | List configured apps |
 | `appsheet_get_app_info` | App config summary |
+
+</details>
 
 ## Examples
 
