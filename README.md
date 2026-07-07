@@ -12,6 +12,9 @@ Open-source [MCP](https://modelcontextprotocol.io) server for **Google AppSheet*
 2. Copy your **App Id** and **Access Key**
 3. Add to your AI assistant's MCP config:
 
+<details>
+<summary>MCP config (click to expand)</summary>
+
 ```json
 {
   "mcpServers": {
@@ -27,7 +30,7 @@ Open-source [MCP](https://modelcontextprotocol.io) server for **Google AppSheet*
 }
 ```
 
-Works with Claude, VS Code, Gemini, Cursor, and any MCP-compatible client.
+</details>
 
 ## Tools
 
