@@ -11,7 +11,12 @@ Open-source [MCP](https://modelcontextprotocol.io) server for **Google AppSheet*
 1. Open your app → **Settings → Integrations** → Enable API
 2. Copy your **App Id** and **Access Key**
 
+<details>
+<summary>Where to find App Id and Access Key (screenshot)</summary>
+
 ![Where to find App Id and Access Key](docs/appsheet-id-and-key.png)
+
+</details>
 
 3. Add to your AI assistant's MCP config:
 
