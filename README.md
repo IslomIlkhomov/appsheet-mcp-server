@@ -61,7 +61,6 @@ Open-source [MCP](https://modelcontextprotocol.io) server for **Google AppSheet*
 **7.** "Run Send Invoice on order #456"
 **8.** "Describe the Orders table"
 
-Filter syntax: `[Status] = "Active"`, `[Total] > 1000`, `AND([Col1] = "X", [Col2] > 5)`
 
 </details>
 
