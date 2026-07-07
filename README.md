@@ -313,4 +313,4 @@ Contributions welcome! Please open an issue or PR on GitHub.
 
 ## License
 
-MIT © [Islom Ilkhom](https://github.com/IslomIlkhom) / [Antigravity](https://antigravity.google/)
+MIT © [Islom Ilkhomov](https://github.com/IslomIlkhomov)
