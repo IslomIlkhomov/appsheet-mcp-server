@@ -4,7 +4,7 @@
  * Open-source MCP server for Google AppSheet — CRUD, schema discovery,
  * and automation tools for AI assistants.
  *
- * @see https://github.com/anthropics/appsheet-mcp-server
+ * @see https://github.com/IslomIlkhomov/appsheet-mcp-server
  * @license MIT
  */
 
