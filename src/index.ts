@@ -35,7 +35,7 @@ async function main(): Promise<void> {
   // Create MCP server
   const server = new McpServer({
     name: "appsheet-mcp-server",
-    version: "1.0.0",
+    version: "1.0.3",
   });
 
   // Register all tools and resources
