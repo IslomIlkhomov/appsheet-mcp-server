@@ -27,11 +27,18 @@
     "no-code",
     "low-code"
   ],
-  "author": "Islom Ilkhomov",
+  "author": {
+    "name": "Islom Ilkhomov",
+    "url": "https://appsheet.com.tr"
+  },
   "license": "MIT",
+  "homepage": "https://appsheet.com.tr/mcp",
   "repository": {
     "type": "git",
-    "url": "https://github.com/IslomIlkhom/appsheet-mcp-server"
+    "url": "git+https://github.com/IslomIlkhomov/appsheet-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IslomIlkhomov/appsheet-mcp-server/issues"
   },
   "engines": {
     "node": ">=18.0.0"
